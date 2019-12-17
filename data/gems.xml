@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<!--Драгоценные и полудрагоценные камни:
+Name - название камня.
+Preciousness - может быть драгоценныем либо полудрагоценным.
+Origin - место добывания.
+Visual parameters(должно быть несколько) - могут быть:
+цвет, прозрачность (в процентах), способ огранки (количество граней 4 - 15).
+Value - вес камня (измеряется в каратах).
+-->
+
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3schools.com file:///D://MyFiles//JavaWEBXMLParsing//src//main//resources//gems.xsd">
+
+    <gem id="1">
+        <name>Aquamarine</name>
+        <preciousness>Semiprecious</preciousness>
+        <origin>Madagascar</origin>
+        <visual-parameters>
+            <color>Blue</color>
+            <transparency>40</transparency>
+            <cutting-method>4</cutting-method>
+        </visual-parameters>
+        <value>10</value>
+    </gem>
+
+    <gem id="2">
+        <name>Diamond</name>
+        <preciousness>Precious</preciousness>
+        <origin>Canada</origin>
+        <visual-parameters>
+            <color>Black</color>
+            <transparency>80</transparency>
+            <cutting-method>6</cutting-method>
+        </visual-parameters>
+        <value>3</value>
+    </gem>
+
+    <gem id="3">
+        <name>Amethyst</name>
+        <preciousness>Semiprecious</preciousness>
+        <origin>SriLanka</origin>
+        <visual-parameters>
+            <color>Violet</color>
+            <transparency>90</transparency>
+            <cutting-method>12</cutting-method>
+        </visual-parameters>
+        <value>7</value>
+    </gem>
+
+</gems>

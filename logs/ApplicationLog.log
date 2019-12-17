@@ -1,0 +1,18 @@
+17:06:10 INFO  SaxGemParser - Start parsing SAX
+17:06:10 INFO  SaxGemHandler - Gem found id: 1
+17:06:10 INFO  SaxGemHandler - Gem found id: 2
+17:06:10 INFO  SaxGemHandler - Gem found id: 3
+17:06:10 INFO  SaxGemParser - SAX parsing successfully completed
+
+17:06:19 INFO  StAXGemParser - Start parsing StAX
+17:06:19 INFO  StAXGemParser - Gem found id: 1
+17:06:19 INFO  StAXGemParser - Gem found id: 2
+17:06:19 INFO  StAXGemParser - Gem found id: 3
+17:06:19 INFO  StAXGemParser - StAX parsing successfully completed
+
+17:06:26 INFO  DomGemParser - Start parsing DOM
+17:06:26 INFO  DomGemParser - Gem found id: 1
+17:06:26 INFO  DomGemParser - Gem found id: 2
+17:06:26 INFO  DomGemParser - Gem found id: 3
+17:06:26 INFO  DomGemParser - DOM parsing successfully completed
+

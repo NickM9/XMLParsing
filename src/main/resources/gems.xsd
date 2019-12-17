@@ -1,0 +1,35 @@
+<!--1 Вариант-->
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+    <element name="gems">
+        <complexType>
+            <sequence>
+                <element name="gem" maxOccurs="unbounded">
+                    <complexType>
+                        <sequence>
+                            <element name="name" type="string"/>
+                            <element name="preciousness" type="string"/>
+                            <element name="Origin" type="string"/>
+                            <element name="visualParameters">
+                                <complexType>
+                                    <sequence>
+                                        <element name="color" type="string"/>
+                                        <element name="transparency" type="int"/>
+                                        <element name="cuttingMethod" type="int"/>
+                                    </sequence>
+                                </complexType>
+                            </element>
+                            <element name="value" type="int"/>
+                        </sequence>
+                        <attribute name="id" type="int" use="required"/>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+
+</schema>
