@@ -1,35 +1,55 @@
-<!--1 Вариант-->
-
 <?xml version="1.0" encoding="UTF-8" ?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-        elementFormDefault="qualified">
 
-    <element name="gems">
-        <complexType>
-            <sequence>
-                <element name="gem" maxOccurs="unbounded">
-                    <complexType>
-                        <sequence>
-                            <element name="name" type="string"/>
-                            <element name="preciousness" type="string"/>
-                            <element name="Origin" type="string"/>
-                            <element name="visualParameters">
-                                <complexType>
-                                    <sequence>
-                                        <element name="color" type="string"/>
-                                        <element name="transparency" type="int"/>
-                                        <element name="cuttingMethod" type="int"/>
-                                    </sequence>
-                                </complexType>
-                            </element>
-                            <element name="value" type="int"/>
-                        </sequence>
-                        <attribute name="id" type="int" use="required"/>
-                    </complexType>
-                </element>
-            </sequence>
-        </complexType>
-    </element>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.epam.by/gems"
+           elementFormDefault="qualified">
 
+    <xs:element name="gems">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="gem" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="preciousness">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Precious"/>
+                                        <xs:enumeration value="Semiprecious"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="origin" type="xs:string"/>
+                            <xs:element name="visual-parameters">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="color" type="xs:string"/>
+                                        <xs:element name="transparency">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:int">
+                                                    <xs:minInclusive value="0"/>
+                                                    <xs:maxInclusive value="120"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="cutting-method">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:int">
+                                                    <xs:minInclusive value="4"/>
+                                                    <xs:maxInclusive value="15"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="value" type="xs:int"/>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:int"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
-</schema>
+</xs:schema>

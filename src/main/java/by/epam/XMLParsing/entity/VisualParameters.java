@@ -6,7 +6,11 @@ public class VisualParameters {
     private int transparency;
     private int cuttingMethod;
 
-    private VisualParameters(){}
+    private VisualParameters(String color, int transparency, int cuttingMethod) {
+        this.color = color;
+        this.transparency = transparency;
+        this.cuttingMethod = cuttingMethod;
+    }
 
     public String getColor() {
         return color;
@@ -51,29 +55,28 @@ public class VisualParameters {
 
     public static class Builder{
 
-        private VisualParameters newVisualParameters;
+        private String color;
+        private int transparency;
+        private int cuttingMethod;
 
-        public Builder(){
-            newVisualParameters = new VisualParameters();
-        }
 
-        public Builder setColor(String color){
-            newVisualParameters.color = color;
+        public Builder withColor(String color){
+            this.color = color;
             return this;
         }
 
-        public Builder setTransparency(int transparency){
-            newVisualParameters.transparency = transparency;
+        public Builder withTransparency(int transparency){
+            this.transparency = transparency;
             return this;
         }
 
-        public Builder setCuttingMethod(int cuttingMethod){
-            newVisualParameters.cuttingMethod = cuttingMethod;
+        public Builder withCuttingMethod(int cuttingMethod){
+            this.cuttingMethod = cuttingMethod;
             return this;
         }
 
         public VisualParameters build(){
-            return newVisualParameters;
+            return new VisualParameters(color, transparency, cuttingMethod);
         }
 
     }

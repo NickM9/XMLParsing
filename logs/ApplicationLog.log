@@ -16,3 +16,45 @@
 17:06:26 INFO  DomGemParser - Gem found id: 3
 17:06:26 INFO  DomGemParser - DOM parsing successfully completed
 
+23:51:18 INFO  DomGemParser - Start parsing DOM
+23:51:18 INFO  DomGemParser - Gem found id: 1
+23:51:18 INFO  DomGemParser - Gem found id: 2
+23:51:18 INFO  DomGemParser - Gem found id: 3
+23:51:18 INFO  DomGemParser - DOM parsing successfully completed
+
+23:51:31 INFO  SaxGemParser - Start parsing SAX
+23:51:31 INFO  SaxGemHandler - Gem found id: 1
+23:51:31 INFO  SaxGemHandler - Gem found id: 2
+23:51:31 INFO  SaxGemHandler - Gem found id: 3
+23:51:31 INFO  SaxGemParser - SAX parsing successfully completed
+
+23:51:41 INFO  StAXGemParser - Start parsing StAX
+23:51:41 INFO  StAXGemParser - Gem found id: 1
+23:51:41 INFO  StAXGemParser - Gem found id: 2
+23:51:41 INFO  StAXGemParser - Gem found id: 3
+23:51:41 INFO  StAXGemParser - StAX parsing successfully completed
+
+15:10:00 INFO  XSDValidation - XML is valid
+15:10:16 WARN  XSDValidation - XML is not valid
+15:10:16 WARN  XSDValidation - cvc-datatype-valid.1.2.1: '' is not a valid value for 'integer'.
+15:18:12 INFO  XSDValidation - XML is valid
+15:18:12 INFO  DomGemParser - Start parsing DOM
+15:18:12 INFO  DomGemParser - Gem found id: 1
+15:18:12 INFO  DomGemParser - Gem found id: 2
+15:18:12 INFO  DomGemParser - Gem found id: 3
+15:18:12 INFO  DomGemParser - DOM parsing successfully completed
+
+15:18:23 INFO  XSDValidation - XML is valid
+15:18:23 INFO  SaxGemParser - Start parsing SAX
+15:18:23 INFO  SaxGemHandler - Gem found id: 1
+15:18:23 INFO  SaxGemHandler - Gem found id: 2
+15:18:23 INFO  SaxGemHandler - Gem found id: 3
+15:18:23 INFO  SaxGemParser - SAX parsing successfully completed
+
+15:18:30 INFO  XSDValidation - XML is valid
+15:18:30 INFO  StAXGemParser - Start parsing StAX
+15:18:30 INFO  StAXGemParser - Gem found id: 1
+15:18:30 INFO  StAXGemParser - Gem found id: 2
+15:18:30 INFO  StAXGemParser - Gem found id: 3
+15:18:30 INFO  StAXGemParser - StAX parsing successfully completed
+

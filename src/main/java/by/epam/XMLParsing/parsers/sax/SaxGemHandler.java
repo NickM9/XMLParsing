@@ -2,6 +2,7 @@ package by.epam.XMLParsing.parsers.sax;
 
 import by.epam.XMLParsing.entity.Gem;
 import by.epam.XMLParsing.entity.GemTagName;
+import by.epam.XMLParsing.entity.Preciousness;
 import by.epam.XMLParsing.entity.VisualParameters;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,7 +51,7 @@ public class SaxGemHandler extends DefaultHandler {
             gemBuilder = new Gem.Builder();
             visualParametersBuilder = new VisualParameters.Builder();
 
-            gemBuilder.setId(Integer.parseInt(attributes.getValue("id")));
+            gemBuilder.withId(Integer.parseInt(attributes.getValue("id")));
             logger.info("Gem found id: " + attributes.getValue("id"));
         }
     }
@@ -61,27 +62,27 @@ public class SaxGemHandler extends DefaultHandler {
         GemTagName tagName = GemTagName.valueOf(qName.toUpperCase().replace("-", "_"));
         switch (tagName) {
             case NAME:
-                gemBuilder.setName(text.toString());
+                gemBuilder.withName(text.toString());
                 break;
             case PRECIOUSNESS:
-                gemBuilder.setPreciousness(text.toString());
+                gemBuilder.withPreciousness(Preciousness.choosePreciousness(text.toString()));
                 break;
             case ORIGIN:
-                gemBuilder.setOrigin(text.toString());
+                gemBuilder.withOrigin(text.toString());
                 break;
             case VALUE:
-                gemBuilder.setValue(Integer.parseInt(text.toString()));
+                gemBuilder.withValue(Integer.parseInt(text.toString()));
                 break;
 
             // VisualParameters
             case COLOR:
-                visualParametersBuilder.setColor(text.toString());
+                visualParametersBuilder.withColor(text.toString());
                 break;
             case TRANSPARENCY:
-                visualParametersBuilder.setTransparency(Integer.parseInt(text.toString()));
+                visualParametersBuilder.withTransparency(Integer.parseInt(text.toString()));
                 break;
             case CUTTING_METHOD:
-                visualParametersBuilder.setCuttingMethod(Integer.parseInt(text.toString()));
+                visualParametersBuilder.withCuttingMethod(Integer.parseInt(text.toString()));
                 break;
 
             // closing tags
@@ -91,7 +92,7 @@ public class SaxGemHandler extends DefaultHandler {
                 break;
 
             case GEM:
-                gemBuilder.setVisualParameters(visualParametersBuilder.build());
+                gemBuilder.withVisualParameters(visualParametersBuilder.build());
                 gem = gemBuilder.build();
                 gemList.add(gem);
 

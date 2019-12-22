@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 
 <!--Драгоценные и полудрагоценные камни:
 Name - название камня.
@@ -10,7 +10,8 @@ Value - вес камня (измеряется в каратах).
 -->
 
 <gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.w3schools.com file:///D://MyFiles//JavaWEBXMLParsing//src//main//resources//gems.xsd">
+      xmlns="http://www.epam.by/gems"
+      xsi:schemaLocation="http://www.epam.by/gems gems.xsd">
 
     <gem id="1">
         <name>Aquamarine</name>

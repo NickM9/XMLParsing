@@ -1,11 +1,14 @@
 package by.epam.XMLParsing.parsers.stax;
 
 import by.epam.XMLParsing.entity.Gem;
+import by.epam.XMLParsing.entity.Preciousness;
 import by.epam.XMLParsing.entity.VisualParameters;
 import org.junit.Assert;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class StAXGemParserTest {
@@ -13,18 +16,18 @@ public class StAXGemParserTest {
     private static final File file = new File("data\\gems.xml");
 
     @Test
-    public void parseTest(){
+    public void parseTest() throws IOException, SAXException {
         Gem expected = new Gem.Builder()
-                .setId(1)
-                .setName("Aquamarine")
-                .setPreciousness("Semiprecious")
-                .setOrigin("Madagascar")
-                .setVisualParameters(new VisualParameters.Builder()
-                        .setColor("Blue")
-                        .setTransparency(40)
-                        .setCuttingMethod(4)
+                .withId(1)
+                .withName("Aquamarine")
+                .withPreciousness(Preciousness.SEMIPRECIOUS)
+                .withOrigin("Madagascar")
+                .withVisualParameters(new VisualParameters.Builder()
+                        .withColor("Blue")
+                        .withTransparency(40)
+                        .withCuttingMethod(4)
                         .build())
-                .setValue(10)
+                .withValue(10)
                 .build();
 
         StAXGemParser parser = new StAXGemParser();

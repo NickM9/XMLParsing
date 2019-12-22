@@ -4,12 +4,19 @@ public class Gem {
 
     private int id;
     private String name;
-    private String preciousness;
+    private Preciousness preciousness;
     private String origin;
     private VisualParameters visualParameters;
     private int value;
 
-    private Gem(){}
+    private Gem(int id, String name, Preciousness preciousness, String origin, VisualParameters visualParameters, int value) {
+        this.id = id;
+        this.name = name;
+        this.preciousness = preciousness;
+        this.origin = origin;
+        this.visualParameters = visualParameters;
+        this.value = value;
+    }
 
     public int getId() {
         return id;
@@ -19,7 +26,7 @@ public class Gem {
         return name;
     }
 
-    public String getPreciousness() {
+    public Preciousness getPreciousness() {
         return preciousness;
     }
 
@@ -75,44 +82,45 @@ public class Gem {
 
     public static class Builder{
 
-        private Gem newGem;
+        private int id;
+        private String name;
+        private Preciousness preciousness;
+        private String origin;
+        private VisualParameters visualParameters;
+        private int value;
 
-        public Builder(){
-            newGem = new Gem();
-        }
-
-        public Builder setId(int id){
-            newGem.id = id;
+        public Builder withId(int id){
+            this.id = id;
             return this;
         }
 
-        public Builder setName(String name){
-            newGem.name = name;
+        public Builder withName(String name){
+            this.name = name;
             return this;
         }
 
-        public Builder setPreciousness(String preciousness){
-            newGem.preciousness = preciousness;
+        public Builder withPreciousness(Preciousness preciousness){
+            this.preciousness = preciousness;
             return this;
         }
 
-        public Builder setOrigin(String origin){
-            newGem.origin = origin;
+        public Builder withOrigin(String origin){
+            this.origin = origin;
             return this;
         }
 
-        public Builder setVisualParameters(VisualParameters visualParameters){
-            newGem.visualParameters = visualParameters;
+        public Builder withVisualParameters(VisualParameters visualParameters){
+            this.visualParameters = visualParameters;
             return this;
         }
 
-        public Builder setValue(int value){
-            newGem.value = value;
+        public Builder withValue(int value){
+            this.value = value;
             return this;
         }
 
         public Gem build(){
-            return newGem;
+            return new Gem(id, name, preciousness, origin, visualParameters, value);
         }
     }
 

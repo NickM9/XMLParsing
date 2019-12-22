@@ -2,18 +2,18 @@ package by.epam.XMLParsing.parsers.stax;
 
 import by.epam.XMLParsing.entity.Gem;
 import by.epam.XMLParsing.entity.GemTagName;
+import by.epam.XMLParsing.entity.Preciousness;
 import by.epam.XMLParsing.entity.VisualParameters;
+import by.epam.XMLParsing.parsers.XSDValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.xml.sax.SAXException;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,21 +21,25 @@ public class StAXGemParser {
 
     private static Logger logger = LogManager.getLogger();
 
-    public List<Gem> parse(File file){
+    public List<Gem> parse(File file) throws IOException, SAXException {
         List<Gem> gems = null;
-        try {
-            logger.info("Start parsing StAX");
-            XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-            InputStream input = new FileInputStream(file);
-            XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
-            gems = process(reader);
 
-        } catch (FileNotFoundException | XMLStreamException e){
-            logger.warn(e);
-            e.printStackTrace();
+        if (XSDValidation.isValid(file)) {
+
+            try {
+                logger.info("Start parsing StAX");
+                XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+                InputStream input = new FileInputStream(file);
+                XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
+                gems = process(reader);
+
+            } catch (FileNotFoundException | XMLStreamException e) {
+                logger.warn(e);
+                e.printStackTrace();
+            }
+            logger.info("StAX parsing successfully completed\n");
         }
-        logger.info("StAX parsing successfully completed\n");
-       return gems;
+        return gems;
     }
 
     private List<Gem> process(XMLStreamReader reader) throws XMLStreamException {
@@ -57,7 +61,7 @@ public class StAXGemParser {
                             gemBuilder = new Gem.Builder();
                             visualParametersBuilder = new VisualParameters.Builder();
                             Integer id = Integer.parseInt(reader.getAttributeValue(null, "id"));
-                            gemBuilder.setId(id);
+                            gemBuilder.withId(id);
                             logger.info("Gem found id: " + id);
                             break;
                     }
@@ -73,27 +77,27 @@ public class StAXGemParser {
                     switch (elementName) {
 
                         case NAME:
-                            gemBuilder.setName(text);
+                            gemBuilder.withName(text);
                             break;
                         case PRECIOUSNESS:
-                            gemBuilder.setPreciousness(text);
+                            gemBuilder.withPreciousness(Preciousness.choosePreciousness(text));
                             break;
                         case ORIGIN:
-                            gemBuilder.setOrigin(text);
+                            gemBuilder.withOrigin(text);
                             break;
                         case VALUE:
-                            gemBuilder.setValue(Integer.parseInt(text));
+                            gemBuilder.withValue(Integer.parseInt(text));
                             break;
 
                         //VisualParameters
                         case COLOR:
-                            visualParametersBuilder.setColor(text);
+                            visualParametersBuilder.withColor(text);
                             break;
                         case TRANSPARENCY:
-                            visualParametersBuilder.setTransparency(Integer.parseInt(text));
+                            visualParametersBuilder.withTransparency(Integer.parseInt(text));
                             break;
                         case CUTTING_METHOD:
-                            visualParametersBuilder.setCuttingMethod(Integer.parseInt(text));
+                            visualParametersBuilder.withCuttingMethod(Integer.parseInt(text));
                             break;
                         default:
                             logger.warn("Tag " + elementName + " not found");
@@ -105,7 +109,7 @@ public class StAXGemParser {
 
                     switch (elementName){
                         case GEM:
-                            gemBuilder.setVisualParameters(visualParametersBuilder.build());
+                            gemBuilder.withVisualParameters(visualParametersBuilder.build());
                             gem = gemBuilder.build();
                             gemList.add(gem);
                     }
